@@ -111,7 +111,7 @@ namespace WebAPI.Controllers
             dbContext.Walks.Add(walk);
             dbContext.SaveChanges();
 
-            return StatusCode(StatusCodes.Status201Created);
+            return CreatedAtAction(nameof(GetById), new { id = walk.Id }, walk);
 
         }
 
@@ -136,7 +136,7 @@ namespace WebAPI.Controllers
 
             dbContext.SaveChanges();
 
-            return Ok(walkDB);
+            return NoContent();
 
         }
 
@@ -155,7 +155,7 @@ namespace WebAPI.Controllers
             dbContext.Walks.Remove(walk);
             dbContext.SaveChanges();
 
-            return Ok("Walk deleted.");
+            return NoContent();
 
         }
 
